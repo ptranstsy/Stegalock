@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&family=Rock+Salt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./src/styles/style.css">
+    <title>StegaLock</title>
+</head>
+<body></body>
+    <!-- Landing Page Section -->
+    <section class="landing-page">
+        <div class="text-box">
+            <h1>StegaLock</h1>
+            <p>Invisible Security for a Visible World</p>
+            <a class="btn-encrypt btn" href="#encrypt">Encrypt</a>
+            <a class="btn-decrypt btn" href="#decrypt">Decrypt</a>
+        </div>
+    </section>
+
+    <!-- Encrypt Section -->
+<section id="encrypt" class="encrypt">
+    <div class="container">
+        <div class="encrypt-title text-center">Encrypt</div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="plaintext" class="form-label">Secret Text</label>
+                    <textarea class="form-control" id="plaintext" rows="3" onkeyup="encryptCrypto()"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="key" class="form-label">Key</label>
+                    <input type="number" class="form-control" id="key" style="width: 120px;" onkeyup="encryptCrypto()" onchange="encryptCrypto()">
+                </div>
+                <div class="mb-3">
+                    <label for="chipertext" class="form-label">Chipertext</label>
+                    <textarea class="form-control" id="chipertext" rows="3" readonly></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="coverImage" class="form-label">Image</label>
+                    <input class="form-control" type="file" id="coverImage" accept="image/*" onchange="handleCoverImage(this)">
+                </div>
+                <button class="btn btn-primary btn-combine" id="btn-combine" onclick="handleCombine()">Combine</button>
+                <button class="btn btn-outline-danger px-3 btn-reset-encrypt" onclick="reset()">Reset</button>
+            </div>
+            <div class="col-md-6">
+                <div class="before text-center">
+                    <canvas id="canvas" class="previewCanvas"></canvas>
+                    <p class="text-preview text-before">Before</p>
+                </div>
+                <div class="after text-center">
+                    <canvas id="canvasAfter" class="previewCanvas"></canvas>
+                    <p class="text-preview text-after">After</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Decrypt Section -->
+<section id="decrypt" class="decrypt">
+    <div class="container">
+        <div class="decrypt-title text-center">Decrypt</div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="stegoImage" class="form-label">Stegano Image</label>
+                    <input class="form-control" type="file" id="stegoImage" accept="image/*" onchange="handleStegoImage(this)">
+                </div>
+                <canvas id="canvasDecrypt" class="previewStegoImage previewCanvasDecrypt"></canvas>
+                <div class="mb-3 mt-2">
+                    <label for="keyDecrypt" class="form-label">Key</label>
+                    <input type="number" class="form-control" id="keyDecrypt" style="width: 120px;">
+                </div>
+                <button class="btn btn-primary px-3 mr-3 btn-decyrpt" onclick="handleDecrypt()">Decrypt</button>
+                <button class="btn btn-outline-danger px-3 btn-reset-decyrpt" onclick="resetDcrypt()">Reset</button>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="resultDecrypt" class="form-label">Result</label>
+                    <textarea class="form-control" id="resultDecrypt" rows="4" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./src/scripts/index.js"></script>
+</body>
+</html>
